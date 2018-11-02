@@ -1,5 +1,8 @@
 import networkx as nx
 import os
+import numpy as np
+import cvxpy
+
 
 ###########################################
 # Change this variable to the path to 
@@ -42,9 +45,24 @@ def parse_input(folder_name):
 
     return graph, num_buses, size_bus, constraints
 
-def solve():
+def solve(G, num_bus, size_bus, constraints):
     #TODO: Write this method as you like. We'd recommend changing the arguments here as well
+    nodes = G.nodes
+    # = list(nx.connected_components(G))
+    roady = []
+    for r in constraints:
+        roady.append(set(r))
+    newG = nx.Graph()
+    newG.add_nodes_from(nodes)
+    edges = [e for e in G.edges]
     pass
+
+
+
+
+
+
+
 
 def main():
     '''
