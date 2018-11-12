@@ -1,5 +1,13 @@
 import networkx as nx
+import random
+import matplotlib.pyplot as plt
 G = nx.Graph()
-G.add_nodes_from(["A", "B", "C", "D", "E", "F"])
-G.add_edges_from([("A", "D"), ("D", "F"), ("F", "C"), ("C", "E"), ("E", "B"), ("B", "F")])
-nx.write_gml(G, "graph.gml")
+for i in range(500):
+    G.add_node("child " + str(i))
+for x in range(500):
+    for y in range(x, 500):
+        r = random.uniform(0,1)
+        if r >= 0.5:
+            G.add_edge("child " + str(x), "child " + str(y))
+#nx.draw(G, with_labels = True)
+nx.write_gml(G, "Medium.gml")
